@@ -10,24 +10,30 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fff1f2; /* tailwind pink-50 */
+            background-color: #fff1f2; /* pink-50 */
+            margin: 0;
+            padding: 0;
         }
         h1, h2 {
-            font-family: 'Playfair+Display', serif;
+            font-family: 'Playfair Display', serif;
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
-    "lucide-react": "https://esm.sh/lucide-react@^0.574.0",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.460.0?external=react",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4"
+    "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
 </script>
 </head>
 <body>
     <div id="root"></div>
+    <!-- Ponto de entrada crucial para o funcionamento do app -->
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>

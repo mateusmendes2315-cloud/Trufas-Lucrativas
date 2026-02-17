@@ -1,11 +1,11 @@
 
 import React, { useState, useMemo } from 'react';
 import { Package, Candy, Heart, Target, Calculator, DollarSign, TrendingUp } from 'lucide-react';
-import Input from './components/ui/Input';
-import { CostData, PricingData, CalculationResults } from './types';
+import Input from './components/ui/Input.tsx';
+import { CostData, PricingData, CalculationResults } from './types.ts';
 
 const App: React.FC = () => {
-  // State for initial costs
+  // Estado para custos iniciais
   const [costs, setCosts] = useState<CostData>({
     chocolatePrice: 0,
     chocolateWeight: 0,
@@ -16,13 +16,13 @@ const App: React.FC = () => {
     producedQuantity: 0,
   });
 
-  // State for pricing and goals
+  // Estado para precificação e metas
   const [pricing, setPricing] = useState<PricingData>({
-    desiredMargin: 100, // Default 100% margin
+    desiredMargin: 100, // Margem padrão de 100%
     monthlyGoal: 0,
   });
 
-  // Derived Calculations
+  // Cálculos Derivados
   const results = useMemo<CalculationResults>(() => {
     const totalCost = costs.chocolatePrice + costs.fillingPrice + costs.packagingPrice;
     const unitCost = costs.producedQuantity > 0 ? totalCost / costs.producedQuantity : 0;
@@ -31,7 +31,7 @@ const App: React.FC = () => {
     const salesPrice = unitCost * marginMultiplier;
     const unitProfit = salesPrice - unitCost;
     
-    // Monthly Goal Calculation (How many truffles to hit the NET PROFIT goal)
+    // Cálculo de meta mensal (Quantas trufas para atingir o lucro LÍQUIDO desejado)
     const trufflesNeeded = (unitProfit > 0 && pricing.monthlyGoal > 0) 
       ? Math.ceil(pricing.monthlyGoal / unitProfit) 
       : 0;
@@ -64,11 +64,11 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-pink-50 pb-20 pt-0">
-      {/* Linha rosa na parte superior (Única e sólida) - Espaçamento reduzido abaixo */}
+      {/* Linha rosa na parte superior (Única e sólida) */}
       <div className="w-full h-3 bg-pink-500 shadow-sm mb-4"></div>
 
       <div className="max-w-md mx-auto px-4">
-        {/* Header - Mais compacto para subir o conteúdo */}
+        {/* Cabeçalho */}
         <header className="text-center mb-6">
           <div className="flex justify-center mb-2">
             <div className="bg-white p-2 rounded-full shadow-md border border-pink-100">
@@ -79,7 +79,7 @@ const App: React.FC = () => {
           <p className="text-pink-600 text-sm font-medium">Seu planejamento profissional</p>
         </header>
 
-        {/* SECTION 1: COSTS */}
+        {/* SEÇÃO 1: CUSTOS */}
         <section className="bg-white rounded-3xl shadow-sm border border-pink-100 p-6 mb-6">
           <div className="flex items-center gap-2 mb-6 border-b border-pink-50 pb-3">
             <Calculator className="text-pink-500 w-5 h-5" />
@@ -160,7 +160,7 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* SECTION 2: UNIT CALCULATION */}
+        {/* SEÇÃO 2: CÁLCULO UNITÁRIO */}
         <section className="bg-pink-500 rounded-3xl shadow-lg p-6 mb-6 text-white">
           <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
             <DollarSign className="w-5 h-5" />
@@ -175,7 +175,7 @@ const App: React.FC = () => {
           </p>
         </section>
 
-        {/* SECTION 3: PRICING */}
+        {/* SEÇÃO 3: PRECIFICAÇÃO */}
         <section className="bg-white rounded-3xl shadow-sm border border-pink-100 p-6 mb-6">
           <div className="flex items-center gap-2 mb-6 border-b border-pink-50 pb-3">
             <TrendingUp className="text-pink-500 w-5 h-5" />
@@ -203,7 +203,7 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* SECTION 4: MONTHLY GOAL */}
+        {/* SEÇÃO 4: META MENSAL */}
         <section className="bg-white rounded-3xl shadow-sm border border-pink-100 p-6">
           <div className="flex items-center gap-2 mb-6 border-b border-pink-50 pb-3">
             <Target className="text-pink-500 w-5 h-5" />
@@ -238,7 +238,7 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* Footer info */}
+        {/* Rodapé */}
         <footer className="mt-10 text-center text-pink-300 text-xs">
           <p>&copy; 2024 Trufas Lucrativas • Planejamento & Sucesso</p>
         </footer>
